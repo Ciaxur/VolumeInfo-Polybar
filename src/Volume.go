@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Volume Information Structure
+// VolumeInfo - Volume Information Structure
 type VolumeInfo struct {
 	ActiveIndex    int
 	VolumePerc     int
@@ -10,10 +10,8 @@ type VolumeInfo struct {
 	BluetoothState bool
 }
 
-/**
- * Volume Info Method used to output all
- *   member variable information
- */
+// Print - Volume Info Method used to output all
+//    member variable information
 func (v *VolumeInfo) Print() {
 	fmt.Printf("Active Index: %d\n", v.ActiveIndex)
 	fmt.Printf("Volume: %d%%\n", v.VolumePerc)
@@ -21,33 +19,31 @@ func (v *VolumeInfo) Print() {
 	fmt.Printf("Bluetooth? %v\n", v.BluetoothState)
 }
 
-/**
- * Volume Info Method used to output data
- *   in a formatted structure
- */
+// Printf - Volume Info Method used to output data
+//   in a formatted structure
 func (v *VolumeInfo) Printf(iconClr string, strClr string) {
 	// SETUP EMOJI VARIABLES
-	BLUE_I := ""  // Bluetooth Emoji
-	MUTED_I := "" // Muted Emoji
-	VOL0_I := ""  // Low Volume
-	VOL1_I := ""  // Medium Volume
-	VOL2_I := ""  // High Volume
-	VOL_I := ""    // Active Volume Emoji
+	BlueIcon := ""    // Bluetooth Emoji
+	MutedIcon := ""   // Muted Emoji
+	Volume0Icon := "" // Low Volume
+	Volume1Icon := "" // Medium Volume
+	Volume2Icon := "" // High Volume
+	VolumeIcon := ""   // Active Volume Emoji
 
 	// FIGURE OUT WHICH EMOJIS TO USE
 	if v.MutedState == true { // Muted
-		fmt.Printf("%%{F%s}%v\n", iconClr, MUTED_I) // Output right away
+		fmt.Printf("%%{F%s}%v\n", iconClr, MutedIcon) // Output right away
 		return
 	} else if v.BluetoothState == true { // Bluteooth
-		VOL_I = BLUE_I
+		VolumeIcon = BlueIcon
 	} else if v.VolumePerc > 60 { // Volume 60+
-		VOL_I = VOL2_I
+		VolumeIcon = Volume2Icon
 	} else if v.VolumePerc > 35 { // Volume 35+
-		VOL_I = VOL1_I
+		VolumeIcon = Volume1Icon
 	} else { // Volume <35
-		VOL_I = VOL0_I
+		VolumeIcon = Volume0Icon
 	}
 
 	// OUTPUT FORMATTED OUTPUT
-	fmt.Printf("%v %%{F%s}%d%%\n", VOL_I, strClr, v.VolumePerc)
+	fmt.Printf("%v %%{F%s}%d%%\n", VolumeIcon, strClr, v.VolumePerc)
 }

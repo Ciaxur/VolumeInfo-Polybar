@@ -9,15 +9,13 @@ import (
 	"time"
 )
 
-/**
- * Obtains Volume information and applied Performance
- *  data while obtaining data
- *
- * @param info - Volume Info Object Pointer that will be
- *  used to store volume information and keep track
- * @param pInfo - Performance Data used to efficiently
- *  obtain Volume Information
- */
+// Obtains Volume information and applied Performance
+//  data while obtaining data
+//
+// @param info - Volume Info Object Pointer that will be
+//  used to store volume information and keep track
+// @param pInfo - Performance Data used to efficiently
+//  obtain Volume Information
 func getInfo(info *VolumeInfo, pInfo *PerformanceData) {
 	// HANDLE ERRORS
 	cmdSuccess := false
